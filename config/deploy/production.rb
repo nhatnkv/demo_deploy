@@ -1,3 +1,24 @@
+user = 'ubuntu'
+ip_address = 'ec2-34-223-231-202.us-west-2.compute.amazonaws.com'
+
+role :app, ["#{user}@#{ip_address}"]
+role :web, ["#{user}@#{ip_address}"]
+role :db,  ["#{user}@#{ip_address}"]
+
+server ip_address,
+       user: user,
+       role: %w{web app}
+
+set :rails_env, 'production'
+set :bundle_flags, '--no-deployment'
+set :ssh_options, {
+  keys: %w(~/pem/first-deploy.pem),
+  forward_agent: true,
+  port: 22
+}
+
+set :nginx_server_name, 'demo_deploy'
+
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
