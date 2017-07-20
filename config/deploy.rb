@@ -10,6 +10,7 @@ set :pty, true
 set :deploy_via, :remote_cache
 set :keep_releases, 5
 
+set :repository_cache, "cached_copy" 
 set :rbenv_type, :user
 set :rbenv_ruby, '2.3.1'
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)}"
