@@ -7,8 +7,8 @@ set :branch, :master
 set :deploy_to, "var/www/#{fetch(:application)}"
 
 set :pty, true
-set :linked_files, %w{config/database.yml}
-set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundler public/system public/uploads}
+# set :linked_files, %w{config/database.yml}
+# set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundler public/system public/uploads}
 set :deploy_via, :remote_cache
 set :keep_releases, 5
 
