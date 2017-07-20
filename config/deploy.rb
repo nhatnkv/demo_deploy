@@ -4,7 +4,7 @@ lock "3.8.2"
 set :application, 'demo_deploy'
 set :repo_url, 'git@github.com:nhatnkv/demo_deploy.git'
 set :branch, :master
-set :deploy_to, "var/www/#{fetch(:application)}"
+set :deploy_to, 'var/www/demo_deploy'
 
 set :pty, true
 set :deploy_via, :remote_cache
