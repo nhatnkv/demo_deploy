@@ -4,9 +4,11 @@ lock "3.8.2"
 set :application, 'demo_deploy'
 set :repo_url, 'git@github.com:nhatnkv/demo_deploy.git'
 set :branch, :master
-set :deploy_to, 'var/www/demo_deploy'
+set :deploy_to, '/var/www/demo_deploy'
 
 set :pty, true
+set :linked_files, %w{config/database.yml config/secrets.yml}
+set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
 set :deploy_via, :remote_cache
 set :keep_releases, 5
 
