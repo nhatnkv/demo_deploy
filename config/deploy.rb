@@ -15,10 +15,9 @@ set :keep_releases, 5
 set :repository_cache, "cached_copy" 
 set :rbenv_type, :user
 set :rbenv_ruby, '2.3.1'
-set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)}"
-set :rbenv_map_bins, %w{rails gem bunlder ruby rake}
+set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 set :rbenv_roles, :all
-set :default_env, { path: "~/.rbenv/shims:~/.rbenv/bin:$PATH" }
 
 set :nginx_config_pat, 'etc/nginx/conf.d'
 set :unicorn_env, fetch(:rack_env, fetch(:rails_env, 'production'))
