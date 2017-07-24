@@ -1,5 +1,5 @@
 user = 'ubuntu'
-ip_address = 'ec2-34-223-231-202.us-west-2.compute.amazonaws.com'
+ip_address = 'ec2-34-208-20-80.us-west-2.compute.amazonaws.com'
 
 role :app, ["#{user}@#{ip_address}"]
 role :web, ["#{user}@#{ip_address}"]
