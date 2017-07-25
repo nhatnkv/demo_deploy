@@ -22,15 +22,3 @@ set :rbenv_roles, :all
 set :nginx_config_pat, 'etc/nginx/conf.d'
 set :unicorn_env, fetch(:rack_env, fetch(:rails_env, 'production'))
 
-namespace :deploy do
-  %w[stop start].each do |command|
-    desc "#{command} unicorn server"
-    task command, roles: :web, except: {no_release: true} do
-      run "sudo service unicorn_#{application} #{command}"
-    end
-    desc "#{command} nginx server"
-    task command, roles: :web, except: {no_release: true} do
-      run "sudo service nginx #{command}"
-    end
-  end
-end
