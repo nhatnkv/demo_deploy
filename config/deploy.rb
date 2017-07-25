@@ -26,8 +26,8 @@ namespace :deploy do
   desc "Restart application"
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-      invoke "sudo service unicorn_#{application} stop"
-      invoke "sudo service unicorn_#{application} start"
+      invoke "sudo service unicorn_demo_deploy stop"
+      invoke "sudo service unicorn_demo_deploy start"
     end
   end
 
