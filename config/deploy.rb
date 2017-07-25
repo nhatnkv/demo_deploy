@@ -22,3 +22,9 @@ set :rbenv_roles, :all
 set :nginx_config_pat, 'etc/nginx/conf.d'
 set :unicorn_env, fetch(:rack_env, fetch(:rails_env, 'production'))
 
+namespace :deploy do
+  after :restart, :clear_cache do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+    end
+  end
+end
