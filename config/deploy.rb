@@ -23,15 +23,16 @@ set :nginx_config_pat, 'etc/nginx/conf.d'
 set :unicorn_env, fetch(:rack_env, fetch(:rails_env, 'production'))
 
 namespace :deploy do
-  %w(stop start).each do |command|
-    desc "#{command} unicorn server"
-    task command, roles: :app, except: { no_release: true } do
-      run "/etc/init.d/unicorn_#{application} #{command}"
+  desc "Restart application"
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      invoke "unicorn:restart"
     end
   end
 
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-    end
-  end
+  # after :restart, :clear_cache do
+  #   on roles(:web), in: :groups, limit: 3, wait: 10 do
+  #   end
+  # end
+  after :publishing, :restart
 end
